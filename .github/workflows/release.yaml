@@ -38,7 +38,7 @@ jobs:
 
           formula_folder: Formula
 
-          github_token: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
           commit_owner: Stenstromen
           commit_email: contact@stenstromen.se
