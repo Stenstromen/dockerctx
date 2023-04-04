@@ -17,7 +17,7 @@ jobs:
       - name: Upload DockerCTX to Github Releases
         uses: xresloader/upload-to-github-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
         with:
           file: "dockerctx"
       - name: Release DockerCTX to my Stenstromen/homebrew-tap
@@ -28,7 +28,7 @@ jobs:
 
           formula_folder: Formula
 
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
 
           commit_owner: Stenstromen
           commit_email: contact@stenstromen.se
