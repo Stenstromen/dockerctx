@@ -13,13 +13,22 @@ jobs:
         with:
           fetch-depth: 0
       - run: git fetch --force --tags
-      
-      - name: Upload DockerCTX to Github Releases
-        uses: xresloader/upload-to-github-release@v1
+        
+      - name: Get release
+        id: get_release
+        uses: bruceadams/get-release@v1.3.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
+
+      - name: Upload release binary
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
         with:
-          file: "dockerctx"
+          upload_url: ${{ steps.get_release.outputs.upload_url }}
+          asset_path: ./target/release/dockerctx
+          asset_name: dockerctx
+          
       - name: Release DockerCTX to my Stenstromen/homebrew-tap
         uses: Justintime50/homebrew-releaser@v1
         with:
