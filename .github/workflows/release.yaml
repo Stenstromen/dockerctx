@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: git fetch --force --tags
-      
+
       - name: Get release
         id: get_release
         uses: bruceadams/get-release@v1.3.2
@@ -29,29 +29,3 @@ jobs:
           asset_path: ./dockerctx
           asset_name: dockerctx
           asset_content_type: application/octet-stream
-  homebrew-releaser:
-    runs-on: ubuntu-latest
-    name: homebrew-releaser
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - run: git fetch --force --tags
-
-      - name: Release DockerCTX to my Stenstromen/homebrew-tap
-        uses: Justintime50/homebrew-releaser@v1
-        with:
-          homebrew_owner: Stenstromen
-          homebrew_tap: homebrew-tap
-
-          formula_folder: Formula
-
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-          commit_owner: Stenstromen
-          commit_email: contact@stenstromen.se
-
-          install: 'bin.install "dockerctx" => "dockerctx"'
-        
-
-          
