@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     name: homebrew-releaser
     steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - run: git fetch --force --tags
+      
       - name: Upload DockerCTX to Github Releases
         uses: xresloader/upload-to-github-release@v1
         env:
