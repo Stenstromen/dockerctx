@@ -26,7 +26,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GO_RELEASER_GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }}
-          asset_path: ./target/release/dockerctx
+          asset_path: ./dockerctx
           asset_name: dockerctx
           asset_content_type: application/octet-stream
           
