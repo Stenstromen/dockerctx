@@ -33,4 +33,4 @@ jobs:
           commit_owner: Stenstromen
           commit_email: contact@stenstromen.se
 
-          install: 'bin.install "dockerctx"'
+          install: 'bin.install "dockerctx" => "dockerctx"'
