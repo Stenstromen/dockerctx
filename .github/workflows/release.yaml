@@ -28,6 +28,7 @@ jobs:
           upload_url: ${{ steps.get_release.outputs.upload_url }}
           asset_path: ./target/release/dockerctx
           asset_name: dockerctx
+          asset_content_type: application/octet-stream
           
       - name: Release DockerCTX to my Stenstromen/homebrew-tap
         uses: Justintime50/homebrew-releaser@v1
