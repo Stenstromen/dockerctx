@@ -1,0 +1,29 @@
+on:
+  release:
+    types: [created]
+
+jobs:
+  homebrew-releaser:
+    runs-on: ubuntu-latest
+    name: homebrew-releaser
+    steps:
+      - name: Upload DockerCTX to Github Releases
+        uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "dockerctx"
+      - name: Release DockerCTX to my Stenstromen/homebrew-tap
+        uses: Justintime50/homebrew-releaser@v1
+        with:
+          homebrew_owner: Stenstromen
+          homebrew_tap: homebrew-tap
+
+          formula_folder: Formula
+
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+          commit_owner: Stenstromen
+          commit_email: contact@stenstromen.se
+
+          install: 'bin.install "dockerctx"'
